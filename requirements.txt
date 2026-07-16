@@ -1,0 +1,23 @@
+# Получение апдейтов Telegram и событий MAX (async HTTP-клиент)
+httpx>=0.27,<1.0
+# Webhook-сервер (telegram_sync.webhook и max_sync.webhook)
+aiohttp>=3.9,<4.0
+# control-API mini-app (src/control): REST-сервис и JWT-сессии
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+PyJWT>=2.8,<3.0
+# Асинхронный PostgreSQL backend для control-store (Docker Compose и внешний Postgres).
+asyncpg>=0.29,<1.0
+# Анимация стикеров TG→MAX (src/control/stickers.py): TGS(Lottie)→mp4 и WebM→mp4 для
+# отправки видео в MAX. Self-contained (без системного ffmpeg/apt): imageio-ffmpeg несёт
+# статичный бинарь ffmpeg, rlottie-python — рендер Lottie. Опционально: без них стикеры
+# деградируют на статичное превью (пересылка не ломается).
+imageio-ffmpeg>=0.5,<1.0
+rlottie-python>=1.3,<2.0
+Pillow>=10,<13
+# ИИ-модерация контента (src/control/moderation.py): MiniMax через его
+# Anthropic-совместимый API (docs/minimax/) — официальный SDK anthropic.
+anthropic>=0.116,<1.0
+# Стоп-словарь модерации (src/control/stoplist.py): редактируемый YAML-словарь
+# (data/moderation/stoplist.yaml). Импорт ленивый — без пакета словарь просто пуст.
+PyYAML>=6.0,<7.0

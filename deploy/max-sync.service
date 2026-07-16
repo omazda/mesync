@@ -1,0 +1,21 @@
+[Unit]
+Description=MAX <-> Telegram sync bot — сторона MAX (приём событий)
+Documentation=file:///root/sync-bot/docs/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/sync-bot
+Environment=PYTHONUNBUFFERED=1
+# Токен и настройки приложение читает само из /root/sync-bot/.env (config.py, MAX_*)
+ExecStart=/root/sync-bot/.venv/bin/python /root/sync-bot/run_max.py
+Restart=always
+RestartSec=5
+# Останов через SIGINT -> graceful shutdown (дослыает логи, сохраняет marker).
+KillSignal=SIGINT
+TimeoutStopSec=25
+SyslogIdentifier=max-sync
+
+[Install]
+WantedBy=multi-user.target

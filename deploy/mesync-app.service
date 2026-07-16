@@ -1,0 +1,23 @@
+[Unit]
+Description=MeSync all-in-one — боты MAX+Telegram (polling) + control-API mini-app
+Documentation=file:///root/sync-bot/docs/README.md
+After=network-online.target
+Wants=network-online.target
+# Конфликтует с раздельными webhook-сервисами: их нужно остановить.
+Conflicts=max-sync.service telegram-sync.service
+
+[Service]
+Type=simple
+WorkingDirectory=/root/sync-bot
+Environment=PYTHONUNBUFFERED=1
+# Токены/настройки читаются из /root/sync-bot/.env (TELEGRAM_BOT_TOKEN, MAX_BOT_TOKEN, MESYNC_*)
+ExecStart=/root/sync-bot/.venv/bin/python /root/sync-bot/run_app.py
+Restart=always
+RestartSec=5
+# Останов через SIGINT -> graceful shutdown (сохраняет marker/offset, гасит API).
+KillSignal=SIGINT
+TimeoutStopSec=25
+SyslogIdentifier=mesync-app
+
+[Install]
+WantedBy=multi-user.target

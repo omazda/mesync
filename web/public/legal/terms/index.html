@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Пользовательское соглашение и публичная оферта сервиса синхронизации __MESYNC_BOT_NAME__." />
+    <meta name="theme-color" content="#f3f5fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)" />
+    <title>__MESYNC_BOT_NAME__ — Пользовательское соглашение / Terms of Use</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --font-ui: ui-sans-serif, -apple-system, "Segoe UI", "PT Sans", "Noto Sans",
+          "Helvetica Neue", Arial, sans-serif;
+        --accent: oklch(0.621 0.181 252.8);
+        --accent-foreground: oklch(0.99 0.005 250);
+        --background: oklch(0.974 0.006 249);
+        --surface: oklch(0.998 0.0015 250);
+        --surface-secondary: oklch(0.965 0.006 249);
+        --separator: oklch(0.92 0.006 249);
+        --border: oklch(0.9 0.008 249);
+        --foreground: oklch(0.23 0.02 257);
+        --body: oklch(0.37 0.02 257);
+        --muted: oklch(0.555 0.018 256);
+        --radius-card: 20px;
+        --surface-shadow: 0 1px 2px 0 oklch(0.55 0.06 255 / 0.06),
+          0 8px 20px -6px oklch(0.55 0.1 255 / 0.1),
+          0 24px 48px -16px oklch(0.5 0.12 255 / 0.1);
+        color: var(--body);
+        background: var(--background);
+        font-family: var(--font-ui);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --accent: oklch(0.678 0.158 252.8);
+          --background: oklch(0.155 0.012 258);
+          --surface: oklch(0.214 0.012 258);
+          --surface-secondary: oklch(0.246 0.012 258);
+          --separator: oklch(0.27 0.012 258);
+          --border: oklch(0.3 0.012 258);
+          --foreground: oklch(0.96 0.01 258);
+          --body: oklch(0.82 0.015 258);
+          --muted: oklch(0.7 0.02 258);
+          --surface-shadow: inset 0 1px 0 0 oklch(0.85 0.02 258 / 0.07);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        background: var(--background);
+        font-family: var(--font-ui);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(120% 80% at 50% -10%, oklch(0.7 0.13 253 / 0.1), transparent 55%),
+          radial-gradient(90% 60% at 100% 8%, oklch(0.72 0.1 230 / 0.07), transparent 50%),
+          var(--background);
+      }
+      @media (prefers-color-scheme: dark) {
+        body::before {
+          background: radial-gradient(120% 80% at 50% -10%, oklch(0.55 0.16 255 / 0.22), transparent 55%),
+            radial-gradient(90% 70% at 100% 5%, oklch(0.45 0.12 270 / 0.16), transparent 50%),
+            var(--background);
+        }
+      }
+      main { width: min(100%, 820px); margin: 0 auto; padding: clamp(16px, 4vw, 40px) clamp(12px, 4vw, 20px) 56px; }
+      article {
+        padding: clamp(20px, 4vw, 32px);
+        background: var(--surface);
+        border: 1px solid var(--separator);
+        border-radius: var(--radius-card);
+        box-shadow: var(--surface-shadow);
+      }
+      @media (prefers-color-scheme: dark) { article { border-color: var(--border); } }
+      .document-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      h1 { margin: 0; color: var(--foreground); font-size: clamp(28px, 5vw, 42px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+      h2 { margin: 32px 0 0; color: var(--foreground); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+      p { margin: 12px 0 0; line-height: 1.7; color: var(--body); }
+      a { color: var(--accent); font-weight: 500; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .subtitle { margin-top: 6px; color: var(--muted); font-size: 17px; }
+      .revision { display: inline-block; margin-top: 16px; padding: 4px 12px; color: var(--muted); background: var(--surface-secondary); border: 1px solid var(--separator); border-radius: 999px; font-size: 13px; }
+      .requisites { margin-top: 14px; line-height: 1.8; color: var(--body); }
+      .language-switch { display: inline-grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; background: var(--surface-secondary); border: 1px solid var(--separator); border-radius: 12px; }
+      button { min-width: 84px; padding: 8px 14px; color: var(--muted); background: transparent; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 600; transition: color 150ms ease, background-color 150ms ease; }
+      button:hover { color: var(--foreground); }
+      button.active { color: var(--accent-foreground); background: var(--accent); }
+      [data-lang-panel] { display: none; }
+      [data-lang-panel].active { display: block; }
+      @media (max-width: 560px) { .document-top { display: grid; } .language-switch { width: 100%; } }
+      @media (prefers-reduced-motion: reduce) { * { transition-duration: 0.01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <div class="document-top">
+          <div data-lang-panel="ru" class="active">
+            <h1>Пользовательское соглашение</h1>
+            <p class="subtitle">Публичная оферта</p>
+            <p class="revision">Редакция от: 08.07.2026</p>
+          </div>
+          <div data-lang-panel="en">
+            <h1>Terms of Use</h1>
+            <p class="subtitle">Public offer</p>
+            <p class="revision">Revision date: 08.07.2026</p>
+          </div>
+
+          <div class="language-switch" aria-label="Language">
+            <button type="button" class="active" data-lang-button="ru">Русский</button>
+            <button type="button" data-lang-button="en">English</button>
+          </div>
+        </div>
+
+        <section data-lang-panel="ru" class="active">
+        __MESYNC_LEGAL_OFFER_INTRO_RU__
+          <p>Настоящее соглашение действует совместно с <a href="/legal/privacy/?lang=ru">Политикой конфиденциальности</a>.</p>
+          <p>Русскоязычная редакция является основной юридической версией. Перевод на английский язык носит справочный характер; при расхождениях применяется русская версия.</p>
+
+          <h2>1. Термины</h2>
+          <p>1.1. Сервис — программный продукт __MESYNC_BOT_NAME__, предназначенный для автоматического переноса (синхронизации) сообщений и постов между мессенджерами MAX и Telegram.</p>
+          <p>1.2. Пользователь — лицо, использующее Сервис: добавляющее ботов Сервиса в чаты и каналы, открывающее мини-приложение или оплачивающее доступ к функциональности Сервиса.</p>
+          <p>1.3. Платформа — техническая инфраструктура, через которую работает Сервис.</p>
+          <p>1.4. Подписка — тариф «Smart», предоставляющий доступ к функциональности Сервиса на оплаченный период.</p>
+          <p>1.5. Медиа-трафик — внутренняя учётная единица Сервиса, отражающая объём перенесённых медиафайлов (фото, видео, файлы, голосовые) за период подписки.</p>
+          <p>1.6. Источник — чат или канал в MAX или Telegram, подключённый Пользователем к Сервису.</p>
+
+          <h2>2. Акцепт оферты</h2>
+          <p>2.1. Настоящее соглашение является публичной офертой.</p>
+          <p>2.2. Договор считается заключённым с момента явного принятия документов в мини-приложении (чекбокс, кнопка «Продолжить» или аналогичное действие), а также с момента добавления бота Сервиса в чат или канал, привязки источника, использования Сервиса либо оплаты подписки, если такие действия совершены после показа ссылки на документы.</p>
+          <p>2.3. При публикации новой существенной редакции Сервис может потребовать повторного акцепта до оплаты, подключения источников, создания или изменения правил пересылки.</p>
+
+          <h2>3. Предмет соглашения</h2>
+          <p>3.1. Исполнитель предоставляет Пользователю доступ к функциональности Сервиса.</p>
+          <p>3.2. Сервис позволяет переносить сообщения и посты между подключёнными Пользователем чатами и каналами MAX и Telegram по правилам, настроенным Пользователем, — с сохранением форматирования и медиа.</p>
+          <p>3.3. В подписку «Smart» входит до 10 активных правил пересылки и 0,5 ТБ медиа-трафика за период подписки.</p>
+          <p>3.4. Работа Сервиса зависит от возможностей и ограничений платформ MAX и Telegram. Перечень поддерживаемых типов контента и известные ограничения описаны в разделе «Частые вопросы» мини-приложения.</p>
+
+          <h2>4. Подписка и оплата</h2>
+          <p>4.1. Стоимость подписки «Smart» — 299 (двести девяносто девять) рублей за 1 (один) месяц.</p>
+          <p>4.2. Оплата принимается через сервис ЮKassa доступными в нём способами (банковская карта, СБП, SberPay, T-Pay, ЮMoney и другие). Оплата является платой за предоставление доступа к функциональности Сервиса. Полные реквизиты платёжных средств Исполнителю не передаются и обрабатываются платёжным сервисом.</p>
+          <p>4.3. Доступ к функциональности Сервиса предоставляется немедленно после подтверждения оплаты. Продление подписки выполняется ровно на 1 месяц в момент истечения оплаченного периода.</p>
+          <p>4.4. Новому Пользователю однократно может предоставляться пробный период 7 дней бесплатно — за привязку автоплатежа (банковская карта или СБП). При привязке денежные средства не списываются; первое списание происходит по окончании пробного периода.</p>
+          <p>4.5. Цены и состав тарифа могут изменяться Исполнителем; изменения не затрагивают уже оплаченный период.</p>
+
+          <h2>5. Автоплатежи</h2>
+          <p>5.1. При включённом автоплатеже способ оплаты привязывается к Сервису, и стоимость подписки — 299 рублей — списывается автоматически один раз в месяц, в дату истечения оплаченного периода. Перед привязкой Сервис явно сообщает Пользователю сумму и периодичность списаний.</p>
+          <p>5.2. Пользователь может в любой момент самостоятельно отключить автоплатёж и отвязать способ оплаты — в мини-приложении: «Настройки → Подписка», тумблер «Автоплатёж» или кнопка «Отвязать», без обращения в поддержку. Привязка удаляется немедленно, дальнейшие автоматические списания прекращаются.</p>
+          <p>5.3. При отключении автоплатежа уже оплаченный период сохраняется до его окончания; подписка перестаёт продлеваться автоматически.</p>
+          <p>5.4. Если автоплатёж отключается в течение пробного периода, пробный период завершается немедленно; дальнейшее использование Сервиса возможно по разовой оплате.</p>
+          <p>5.5. Пользователь также может отозвать разрешение на списания через свой банк; в этом случае Исполнитель прекращает использование привязки при первой неуспешной попытке списания.</p>
+          <p>5.6. При невозможности автосписания действие подписки приостанавливается до оплаты; Сервис уведомляет Пользователя и может повторить попытку списания.</p>
+
+          <h2>6. Медиа-трафик</h2>
+          <p>6.1. В медиа-трафик засчитывается только объём перенесённых медиафайлов; перенос текста трафик не расходует.</p>
+          <p>6.2. При исчерпании медиа-трафика перенос сообщений не останавливается: текст доставляется полностью, вместо медиа добавляется ссылка на оригинальное сообщение.</p>
+          <p>6.3. Счётчик медиа-трафика обнуляется в дату продления подписки. Могут предлагаться дополнительные пакеты медиа-трафика по ценам, указанным в мини-приложении; пакет действует до конца текущего периода и на следующий период не переносится.</p>
+          <p>6.4. Медиа-трафик — внутренняя единица учёта. Он не является денежным средством, электронными деньгами или имущественным правом, не подлежит обмену на деньги, передаче третьим лицам, продаже или выводу из Сервиса.</p>
+
+          <h2>7. Возвраты</h2>
+          <p>7.1. Оказание услуги начинается немедленно с момента активации подписки.</p>
+          <p>7.2. Возврат денежных средств за уже предоставленный доступ к функциональности Сервиса не производится, за исключением случаев, прямо предусмотренных законодательством.</p>
+          <p>7.3. Если доступ к функциональности Сервиса не был предоставлен по вине Исполнителя, Пользователь вправе обратиться с требованием о возврате в порядке, установленном законодательством, — по контактам, указанным в реквизитах.</p>
+          <p>7.4. Неиспользованный остаток оплаченного периода и медиа-трафика при добровольном отказе от Сервиса не компенсируется, если иное не требуется по закону.</p>
+
+          <h2>8. Работа Сервиса</h2>
+          <p>8.1. Сервис предоставляется по принципу «как есть».</p>
+          <p>8.2. Исполнитель не гарантирует бесперебойную и безошибочную работу Сервиса.</p>
+          <p>8.3. Возможны технические перерывы, сбои, ограничения доступа, изменения функциональности и обновления Сервиса.</p>
+          <p>8.4. Исполнитель вправе изменять интерфейс, функциональность, алгоритмы переноса сообщений, способы учёта медиа-трафика и порядок работы Сервиса.</p>
+          <p>8.5. Исполнитель вправе временно приостанавливать работу Сервиса или отдельных функций для обновления, обслуживания, устранения ошибок или обеспечения безопасности.</p>
+
+          <h2>9. Ответственность</h2>
+          <p>9.1. Пользователь самостоятельно отвечает за содержание подключённых им чатов и каналов и за правомерность переноса их контента, включая наличие необходимых прав и согласий участников и владельцев контента.</p>
+          <p>9.2. Пользователь обязан соблюдать законодательство Российской Федерации, применимые обязательные нормы иных юрисдикций, правила MAX и Telegram, а также права третьих лиц при подключении источников, настройке пересылки и публикации пользовательского контента.</p>
+          <p>9.3. Запрещается использовать Сервис для рассылки спама, мошенничества, фишинга, обхода ограничений платформ, распространения незаконных товаров или услуг, экстремистских материалов, детской сексуальной эксплуатации, незаконной порнографии, пропаганды насилия, незаконного оборота оружия, наркотиков, персональных данных без правового основания, вредоносного ПО, материалов, нарушающих интеллектуальные права, или иного запрещённого контента.</p>
+          <p>9.4. Пользователь подтверждает, что имеет право подключать соответствующие чаты и каналы, выдавать ботам Сервиса права чтения/публикации и переносить сообщения, медиа, подписи, имена авторов, ссылки и иные элементы сообщений между платформами.</p>
+          <p>9.5. Исполнитель не является автором или редактором переносимых сообщений и не отвечает за их содержание, если иное прямо не следует из обязательных норм закона.</p>
+          <p>9.6. Ответственность Исполнителя ограничивается суммой, фактически оплаченной Пользователем за использование Сервиса за последние 30 календарных дней, если иное не установлено законом.</p>
+
+          <h2>10. Ограничение доступа</h2>
+          <p>10.1. Исполнитель вправе ограничить или прекратить доступ Пользователя к Сервису, остановить правило пересылки, удалить или скрыть копию сообщения, заблокировать источник или аккаунт при нарушении соглашения, злоупотреблении функциональностью, попытках обхода технических ограничений, жалобах на пользовательский контент, требованиях платформ MAX/Telegram, требованиях государственных органов или использовании Сервиса в незаконных целях.</p>
+          <p>10.2. Жалобы на перенесённый контент могут обрабатываться автоматически и/или вручную. Если жалоба поступает от администратора соответствующего источника и его статус подтверждён платформой, Сервис может автоматически скрыть копию сообщения без дополнительного ручного рассмотрения.</p>
+          <p>10.3. Ограничение доступа не прекращает обязанность Пользователя оплатить уже оказанные услуги и не лишает его права обратиться в поддержку или направить претензию.</p>
+
+          <h2>11. Данные</h2>
+          <p>11.1. Для работы Сервиса обрабатываются: номер телефона Пользователя, идентификаторы его аккаунтов в MAX и Telegram, сведения о подключённых чатах и каналах, настройки правил, счётчики медиа-трафика, платёжные статусы, технические журналы, report-токены жалоб, снимки сообщений для модерации и иные данные, описанные в Политике конфиденциальности.</p>
+          <p>11.2. Пользователь даёт согласие на обработку персональных данных и иных переданных им данных в объёме, необходимом для оказания услуг по настоящему соглашению.</p>
+          <p>11.3. Пользователь гарантирует, что обладает необходимыми правами и/или согласиями на подключение чатов и каналов и перенос их содержимого.</p>
+          <p>11.4. MAX, Telegram, ЮKassa, провайдеры хостинга, сервисы ИИ-модерации, технические подрядчики и иные получатели могут участвовать в обработке данных в соответствии со своей ролью, собственными правилами обработки данных и/или договорами с Исполнителем.</p>
+          <p>11.5. Обработка персональных данных осуществляется в соответствии с <a href="/legal/privacy/?lang=ru">Политикой конфиденциальности</a>.</p>
+
+          <h2>12. Изменение соглашения</h2>
+          <p>12.1. Исполнитель вправе изменять настоящее соглашение.</p>
+          <p>12.2. Актуальная редакция соглашения публикуется на сайте, в мини-приложении или ином доступном интерфейсе Сервиса с указанием даты редакции.</p>
+          <p>12.3. Новая редакция вступает в силу с момента публикации, если иной срок не указан в новой редакции.</p>
+          <p>12.4. Продолжение использования Сервиса после публикации новой редакции означает согласие Пользователя с изменениями, если Сервис не потребовал отдельного повторного акцепта.</p>
+
+          <h2>13. Форс-мажор</h2>
+          <p>13.1. Исполнитель не отвечает за неисполнение или ненадлежащее исполнение обязательств, вызванное обстоятельствами непреодолимой силы, сбоями платформ MAX и Telegram, платёжных сервисов, хостинга, сетей связи или иных сторонних сервисов, если такие обстоятельства не вызваны действиями Исполнителя.</p>
+
+          <h2>14. Поддержка, претензии и споры</h2>
+          <p>14.1. Вопросы по работе Сервиса, оплате и претензиям направляются Исполнителю по электронной почте или в Telegram, указанным в реквизитах.</p>
+          <p>14.2. Претензия должна содержать данные Пользователя, контакт для ответа, описание требования и подтверждающие материалы при их наличии.</p>
+          <p>14.3. Срок рассмотрения претензии составляет до 30 календарных дней с момента получения.</p>
+          <p>14.4. К настоящему соглашению применяется право Российской Федерации в части, не противоречащей обязательным нормам применимого права.</p>
+          <p>14.5. Споры разрешаются путём переговоров, а при недостижении согласия — в порядке, предусмотренном законодательством Российской Федерации.</p>
+
+          <h2>15. Реквизиты Исполнителя</h2>
+        __MESYNC_LEGAL_REQUISITES_RU__
+        </section>
+
+        <section data-lang-panel="en">
+        __MESYNC_LEGAL_OFFER_INTRO_EN__
+          <p>This agreement applies together with the <a href="/legal/privacy/?lang=en">Privacy Policy</a>.</p>
+          <p>The Russian version is the primary legal version. The English version is provided for reference only; in case of discrepancy, the Russian version prevails.</p>
+
+          <h2>1. Terms</h2>
+          <p>1.1. Service means the __MESYNC_BOT_NAME__ software product designed to automatically transfer (mirror) messages and posts between the MAX and Telegram messengers.</p>
+          <p>1.2. User means a person who uses the Service: adds the Service bots to chats and channels, opens the Mini App, or pays for access to the Service functionality.</p>
+          <p>1.3. Platform means the technical infrastructure through which the Service operates.</p>
+          <p>1.4. Subscription means the "Smart" plan that provides access to the Service functionality for the paid period.</p>
+          <p>1.5. Media traffic means an internal accounting unit of the Service reflecting the volume of transferred media files (photos, videos, files, voice messages) during the subscription period.</p>
+          <p>1.6. Source means a chat or channel in MAX or Telegram connected by the User to the Service.</p>
+
+          <h2>2. Acceptance of the offer</h2>
+          <p>2.1. This agreement is a public offer.</p>
+          <p>2.2. The agreement is deemed concluded when the User explicitly accepts the documents in the Mini App (checkbox, "Continue" button, or similar action), and also when the User adds a Service bot to a chat or channel, connects a source, uses the Service, or pays for the subscription after links to the documents have been shown.</p>
+          <p>2.3. When a new material revision is published, the Service may require repeated acceptance before payment, connecting sources, creating, or editing forwarding rules.</p>
+
+          <h2>3. Subject of the agreement</h2>
+          <p>3.1. The Contractor provides the User with access to the Service functionality.</p>
+          <p>3.2. The Service transfers messages and posts between the User's connected MAX and Telegram chats and channels according to the rules configured by the User, preserving formatting and media.</p>
+          <p>3.3. The "Smart" subscription includes up to 10 active forwarding rules and 0.5 TB of media traffic per subscription period.</p>
+          <p>3.4. The Service depends on the capabilities and restrictions of the MAX and Telegram platforms. Supported content types and known limitations are described in the FAQ section of the Mini App.</p>
+
+          <h2>4. Subscription and payment</h2>
+          <p>4.1. The price of the "Smart" subscription is 299 (two hundred ninety-nine) rubles per 1 (one) month.</p>
+          <p>4.2. Payments are accepted via the YooKassa service using the methods available there (bank card, SBP, SberPay, T-Pay, YooMoney, and others). Payment is a fee for access to the Service functionality. Full payment credentials are not transferred to the Contractor and are processed by the payment service.</p>
+          <p>4.3. Access to the Service functionality is granted immediately after the payment is confirmed. The subscription is renewed for exactly 1 month at the moment the paid period expires.</p>
+          <p>4.4. A new User may be granted a one-time free trial of 7 days for saving a payment method for recurring payments (bank card or SBP). No money is charged when the payment method is saved; the first charge occurs when the trial ends.</p>
+          <p>4.5. Prices and plan contents may be changed by the Contractor; changes do not affect the period already paid for.</p>
+
+          <h2>5. Recurring payments</h2>
+          <p>5.1. When autopay is enabled, the payment method is saved for the Service, and the subscription price — 299 rubles — is charged automatically once a month, on the date the paid period expires. Before saving the payment method, the Service explicitly informs the User of the amount and frequency of charges.</p>
+          <p>5.2. The User may at any time independently disable autopay and unlink the payment method in the Mini App: "Settings → Subscription", the "Autopay" toggle or the "Unlink" button, without contacting support. The link is removed immediately, and further automatic charges stop.</p>
+          <p>5.3. When autopay is disabled, the already paid period remains valid until it ends; the subscription simply stops renewing automatically.</p>
+          <p>5.4. If autopay is disabled during the trial period, the trial ends immediately; further use of the Service is possible with one-time payments.</p>
+          <p>5.5. The User may also revoke the charge permission via their bank; in this case the Contractor stops using the saved payment method upon the first failed charge attempt.</p>
+          <p>5.6. If an automatic charge cannot be made, the subscription is suspended until payment; the Service notifies the User and may retry the charge.</p>
+
+          <h2>6. Media traffic</h2>
+          <p>6.1. Only the volume of transferred media files counts towards media traffic; text transfer does not consume traffic.</p>
+          <p>6.2. When media traffic is exhausted, message transfer does not stop: text is delivered in full, and a link to the original message is added instead of media.</p>
+          <p>6.3. The media traffic counter resets on the subscription renewal date. Additional media traffic packages may be offered at the prices indicated in the Mini App; a package is valid until the end of the current period and does not carry over.</p>
+          <p>6.4. Media traffic is an internal accounting unit. It is not money, electronic money, or a property right, and cannot be exchanged for money, transferred to third parties, sold, or withdrawn from the Service.</p>
+
+          <h2>7. Refunds</h2>
+          <p>7.1. The service starts immediately upon subscription activation.</p>
+          <p>7.2. No refunds are made for access to the Service functionality already provided, except in cases expressly provided for by law.</p>
+          <p>7.3. If access to the Service functionality was not provided due to the Contractor's fault, the User may request a refund in the manner prescribed by law using the contacts specified in the requisites.</p>
+          <p>7.4. The unused remainder of the paid period and media traffic is not compensated upon voluntary refusal, unless otherwise required by law.</p>
+
+          <h2>8. Service operation</h2>
+          <p>8.1. The Service is provided "as is".</p>
+          <p>8.2. The Contractor does not guarantee uninterrupted and error-free operation of the Service.</p>
+          <p>8.3. Technical interruptions, failures, access restrictions, functionality changes, and Service updates are possible.</p>
+          <p>8.4. The Contractor may change the interface, functionality, message transfer algorithms, media traffic accounting, and the operation of the Service.</p>
+          <p>8.5. The Contractor may temporarily suspend the Service or individual features for updates, maintenance, bug fixing, or security purposes.</p>
+
+          <h2>9. Liability</h2>
+          <p>9.1. The User is solely responsible for the content of the connected chats and channels and for the lawfulness of transferring their content, including having the necessary rights and consents of participants and content owners.</p>
+          <p>9.2. The User must comply with the laws of the Russian Federation, applicable mandatory rules of other jurisdictions, MAX and Telegram rules, and third-party rights when connecting sources, configuring forwarding, and publishing user content.</p>
+          <p>9.3. It is prohibited to use the Service for spam, fraud, phishing, circumvention of platform restrictions, illegal goods or services, extremist materials, child sexual exploitation, illegal pornography, promotion of violence, illegal circulation of weapons or drugs, personal data processing without a legal basis, malware, intellectual property infringement, or other prohibited content.</p>
+          <p>9.4. The User confirms that they have the right to connect the relevant chats and channels, grant the Service bots reading/posting permissions, and transfer messages, media, captions, author names, links, and other message elements between platforms.</p>
+          <p>9.5. The Contractor is not the author or editor of the transferred messages and is not responsible for their content unless mandatory law provides otherwise.</p>
+          <p>9.6. The Contractor's liability is limited to the amount actually paid by the User for the Service during the last 30 calendar days, unless otherwise provided by law.</p>
+
+          <h2>10. Access restriction</h2>
+          <p>10.1. The Contractor may restrict or terminate the User's access to the Service, hold a forwarding rule, delete or hide a copied message, block a source or account in case of violation of the agreement, abuse of functionality, attempts to bypass technical restrictions, complaints about user content, MAX/Telegram platform requirements, government requests, or illegal use of the Service.</p>
+          <p>10.2. Complaints about transferred content may be processed automatically and/or manually. If a complaint is submitted by an administrator of the relevant source and their status is confirmed by the platform, the Service may automatically hide the copied message without additional manual review.</p>
+          <p>10.3. Access restriction does not terminate the User's obligation to pay for services already provided and does not deprive the User of the right to contact support or submit a claim.</p>
+
+          <h2>11. Data</h2>
+          <p>11.1. To operate the Service, the following is processed: the User's phone number, identifiers of their MAX and Telegram accounts, information about connected chats and channels, rule settings, media traffic counters, payment statuses, technical logs, complaint report tokens, message snapshots for moderation, and other data described in the Privacy Policy.</p>
+          <p>11.2. The User consents to the processing of personal and other data provided by them to the extent necessary to provide services under this agreement.</p>
+          <p>11.3. The User warrants that they have the necessary rights and/or consents to connect chats and channels and to transfer their content.</p>
+          <p>11.4. MAX, Telegram, YooKassa, hosting providers, AI moderation providers, technical contractors, and other recipients may participate in data processing according to their role, their own data processing rules, and/or agreements with the Contractor.</p>
+          <p>11.5. Personal data is processed in accordance with the <a href="/legal/privacy/?lang=en">Privacy Policy</a>.</p>
+
+          <h2>12. Changes to the agreement</h2>
+          <p>12.1. The Contractor may amend this agreement.</p>
+          <p>12.2. The current version of the agreement is published on the website, in the Mini App, or in another available Service interface with the revision date.</p>
+          <p>12.3. The new version takes effect upon publication, unless another date is specified in it.</p>
+          <p>12.4. Continued use of the Service after the publication of a new version constitutes the User's consent to the changes, unless the Service requires separate repeated acceptance.</p>
+
+          <h2>13. Force majeure</h2>
+          <p>13.1. The Contractor is not liable for non-performance or improper performance of obligations caused by force majeure, failures of the MAX and Telegram platforms, payment services, hosting, communication networks, or other third-party services, unless such circumstances are caused by the Contractor's actions.</p>
+
+          <h2>14. Support, claims, and disputes</h2>
+          <p>14.1. Questions about the Service, payments, and claims are sent to the Contractor by email or Telegram specified in the requisites.</p>
+          <p>14.2. A claim must contain the User's details, a contact for reply, a description of the demand, and supporting materials, if any.</p>
+          <p>14.3. Claims are considered within up to 30 calendar days from receipt.</p>
+          <p>14.4. This agreement is governed by the law of the Russian Federation to the extent not contradicting mandatory rules of applicable law.</p>
+          <p>14.5. Disputes are resolved through negotiations and, failing agreement, in the manner prescribed by the legislation of the Russian Federation.</p>
+
+          <h2>15. Contractor's requisites</h2>
+        __MESYNC_LEGAL_REQUISITES_EN__
+        </section>
+      </article>
+    </main>
+
+    <script>
+      const buttons = Array.from(document.querySelectorAll("[data-lang-button]"));
+      const panels = Array.from(document.querySelectorAll("[data-lang-panel]"));
+
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        buttons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.langButton === language);
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.langPanel === language);
+        });
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", language);
+        window.history.replaceState({}, "", url);
+      }
+
+      const initialLanguage = new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "ru";
+      setLanguage(initialLanguage);
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.dataset.langButton));
+      });
+    </script>
+  </body>
+</html>

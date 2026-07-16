@@ -1,0 +1,41 @@
+# Secrets and local environment files must never enter the build context.
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Version control and local agent/editor state.
+.git
+.git.broken-*
+.agents
+.claude
+.codex
+.github
+
+# Runtime state, uploads and local snapshots.
+data
+photo
+*.log
+*.bak
+*.backup
+
+# Local dependencies, caches and generated frontend builds.
+.venv
+venv
+__pycache__
+**/__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+web/node_modules
+web/dist
+web/dist.bak-*
+admin/node_modules
+admin/dist
+
+# Files not needed by the production image.
+docs
+tests
+tools
+deploy
+SECURITY.md

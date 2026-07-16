@@ -1,0 +1,35 @@
+# Секреты — НИКОГДА не коммитить
+.env
+.env.*
+!.env.example
+
+# Локальный контекст агентов/IDE
+.agents/
+.codex/
+.git.broken-*/
+.DS_Store
+
+# Данные рантайма (сырые апдейты, контент, offset, скачанные медиа)
+/data/
+/photo/
+*.log
+*.bak
+*.backup
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Mini-app (web/): зависимости и сборка
+/web/node_modules/
+/web/dist/
+/web/dist.bak-*/
+
+# Админ-панель (admin/): зависимости и сборка (собирается на сервере при деплое)
+/admin/node_modules/
+/admin/dist/

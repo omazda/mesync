@@ -1,0 +1,23 @@
+[Unit]
+Description=Telegram <-> MAX sync bot — Этап 1 (приём апдейтов)
+Documentation=file:///root/sync-bot/docs/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/sync-bot
+# Логи сразу во журнал, без буферизации
+Environment=PYTHONUNBUFFERED=1
+# Токен и настройки приложение читает само из /root/sync-bot/.env (config.py)
+ExecStart=/root/sync-bot/.venv/bin/python /root/sync-bot/run_stage1.py
+Restart=always
+RestartSec=5
+# Останов через SIGINT -> graceful shutdown приложения
+# (дособирает альбомы, дослыает логи, сохраняет offset).
+KillSignal=SIGINT
+TimeoutStopSec=25
+SyslogIdentifier=telegram-sync
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,28 @@
+services:
+  app:
+    environment:
+      TELEGRAM_API_BASE: http://telegram-bot-api:8081
+      TELEGRAM_API_LOCAL_FILES_ROOT: "/var/lib/telegram-bot-api/${TELEGRAM_BOT_TOKEN}"
+    group_add:
+      - "${TELEGRAM_API_FILE_GID:-101}"
+    volumes:
+      - type: bind
+        source: "${TELEGRAM_API_DATA_DIR:-/var/lib/telegram-bot-api}/${TELEGRAM_BOT_TOKEN}"
+        target: "/var/lib/telegram-bot-api/${TELEGRAM_BOT_TOKEN}"
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          test -r "/var/lib/telegram-bot-api/$${TELEGRAM_BOT_TOKEN}"
+          && test -x "/var/lib/telegram-bot-api/$${TELEGRAM_BOT_TOKEN}"
+          && python -c "import json, os, urllib.request; port = os.environ.get('MESYNC_API_PORT', '8090'); health = json.load(urllib.request.urlopen(f'http://127.0.0.1:{port}/api/health', timeout=4)); assert health.get('ok') is True"
+    networks:
+      - telegram-api
+
+networks:
+  telegram-api:
+    external: true
+    name: telegram-bot-api_default

@@ -1,0 +1,158 @@
+name: mesync
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${MESYNC_POSTGRES_DB:-mesync}
+      POSTGRES_USER: ${MESYNC_POSTGRES_USER:-mesync}
+      POSTGRES_PASSWORD: ${MESYNC_POSTGRES_PASSWORD:?Set MESYNC_POSTGRES_PASSWORD in .env}
+      POSTGRES_INITDB_ARGS: --data-checksums
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready --username=$${POSTGRES_USER} --dbname=$${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+    stop_grace_period: 30s
+
+  pgadmin:
+    image: dpage/pgadmin4:9.16
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${MESYNC_PGADMIN_EMAIL:-admin@mesync.app}
+      PGADMIN_DEFAULT_PASSWORD: "${MESYNC_PGADMIN_PASSWORD:-${MESYNC_ADMIN_PASSWORD:?Set MESYNC_ADMIN_PASSWORD or MESYNC_PGADMIN_PASSWORD in .env}}"
+      PGADMIN_DISABLE_POSTFIX: "1"
+      PGADMIN_LISTEN_ADDRESS: 0.0.0.0
+      PGADMIN_LISTEN_PORT: "5050"
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
+      PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "True"
+      PGADMIN_CONFIG_SESSION_COOKIE_PATH: "'/admin/psql/'"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+      PGADMIN_CONFIG_ENABLE_SERVER_PASS_EXEC_CMD: "True"
+      PGADMIN_CONFIG_ENABLE_PSQL: "True"
+      PGADMIN_CONFIG_UPGRADE_CHECK_ENABLED: "False"
+      MESYNC_POSTGRES_PASSWORD: ${MESYNC_POSTGRES_PASSWORD:?Set MESYNC_POSTGRES_PASSWORD in .env}
+    depends_on:
+      db:
+        condition: service_healthy
+    configs:
+      - source: pgadmin_servers
+        target: /pgadmin4/servers.json
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./deploy/pgadmin/read-postgres-password.sh:/pgadmin4/mesync-password.sh:ro
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider --quiet http://127.0.0.1:5050/misc/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    restart: unless-stopped
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+  app:
+    image: ${MESYNC_IMAGE:-mesync:local}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE: ${VITE_API_BASE:-/api}
+    env_file:
+      - ${MESYNC_ENV_FILE:-.env}
+    environment:
+      MESYNC_API_HOST: 0.0.0.0
+      MESYNC_API_PORT: "8090"
+      DATA_DIR: /app/data
+      MAX_DATA_DIR: /app/data/max
+      MESYNC_DATA_DIR: /app/data/control
+      MAX_OWNERSHIP_FILE: /app/data/max/ownership.json
+      TG_OWNERSHIP_FILE: /app/data/ownership.json
+      TG_CONTENT_FILE: /app/data/content.jsonl
+      MESYNC_AVATAR_DIR: /app/data/media/avatars
+      MESYNC_MODERATION_STOPLIST: /app/data/moderation/stoplist.yaml
+      MESYNC_POSTGRES_HOST: db
+      MESYNC_POSTGRES_PORT: "5432"
+      MESYNC_POSTGRES_DB: ${MESYNC_POSTGRES_DB:-mesync}
+      MESYNC_POSTGRES_USER: ${MESYNC_POSTGRES_USER:-mesync}
+      MESYNC_POSTGRES_PASSWORD: ${MESYNC_POSTGRES_PASSWORD:?Set MESYNC_POSTGRES_PASSWORD in .env}
+    depends_on:
+      db:
+        condition: service_healthy
+    expose:
+      - "8090"
+    volumes:
+      - data:/app/data
+    networks:
+      - backend
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+  gateway:
+    image: nginx:1.28.3-alpine
+    entrypoint: ["nginx", "-g", "daemon off;"]
+    depends_on:
+      app:
+        condition: service_healthy
+      pgadmin:
+        condition: service_healthy
+    ports:
+      - "${MESYNC_DOCKER_BIND:-127.0.0.1}:${MESYNC_DOCKER_PORT:-8090}:8080"
+    volumes:
+      - ./deploy/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:8080/api/health | grep -q '\"ok\":true' && wget -q --spider http://127.0.0.1:8080/admin/psql/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    restart: unless-stopped
+    stop_grace_period: 15s
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  data:
+  postgres_data:
+  pgadmin_data:
+
+configs:
+  pgadmin_servers:
+    content: |
+      {
+        "Servers": {
+          "1": {
+            "Name": "MeSync PostgreSQL",
+            "Group": "MeSync",
+            "Host": "db",
+            "Port": 5432,
+            "MaintenanceDB": "${MESYNC_POSTGRES_DB:-mesync}",
+            "Username": "${MESYNC_POSTGRES_USER:-mesync}",
+            "SSLMode": "prefer",
+            "PasswordExecCommand": "/bin/sh /pgadmin4/mesync-password.sh",
+            "PasswordExecExpiration": 300,
+            "Comment": "PostgreSQL managed by MeSync Docker Compose"
+          }
+        }
+      }
+
+networks:
+  backend:

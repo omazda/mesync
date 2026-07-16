@@ -1,0 +1,24 @@
+{
+  "name": "mesync-miniapp",
+  "private": true,
+  "version": "1.0.1",
+  "type": "module",
+  "description": "MAX ⇄ Telegram Sync — mini-app (панель управления ботом-синхронизатором).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "@telegram-apps/telegram-ui": "^2.1.13",
+    "lucide-react": "^1.23.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "playwright-core": "^1.60.0",
+    "vite": "^5.4.11"
+  }
+}

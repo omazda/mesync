@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Пользовательское соглашение и политика конфиденциальности сервиса __MESYNC_BOT_NAME__." />
+    <meta name="theme-color" content="#f3f5fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)" />
+    <title>__MESYNC_BOT_NAME__ Legal Documents</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --font-ui: ui-sans-serif, -apple-system, "Segoe UI", "PT Sans", "Noto Sans",
+          "Helvetica Neue", Arial, sans-serif;
+
+        --accent: oklch(0.621 0.181 252.8);
+        --accent-foreground: oklch(0.99 0.005 250);
+
+        --background: oklch(0.974 0.006 249);
+        --surface: oklch(0.998 0.0015 250);
+        --surface-secondary: oklch(0.965 0.006 249);
+        --separator: oklch(0.92 0.006 249);
+        --border: oklch(0.9 0.008 249);
+        --foreground: oklch(0.23 0.02 257);
+        --body: oklch(0.37 0.02 257);
+        --muted: oklch(0.555 0.018 256);
+
+        --radius: 14px;
+        --radius-card: 20px;
+
+        --surface-shadow: 0 1px 2px 0 oklch(0.55 0.06 255 / 0.06),
+          0 8px 20px -6px oklch(0.55 0.1 255 / 0.1),
+          0 24px 48px -16px oklch(0.5 0.12 255 / 0.1);
+
+        color: var(--body);
+        background: var(--background);
+        font-family: var(--font-ui);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --accent: oklch(0.678 0.158 252.8);
+          --background: oklch(0.155 0.012 258);
+          --surface: oklch(0.214 0.012 258);
+          --surface-secondary: oklch(0.246 0.012 258);
+          --separator: oklch(0.27 0.012 258);
+          --border: oklch(0.3 0.012 258);
+          --foreground: oklch(0.96 0.01 258);
+          --body: oklch(0.82 0.015 258);
+          --muted: oklch(0.7 0.02 258);
+          --surface-shadow: inset 0 1px 0 0 oklch(0.85 0.02 258 / 0.07);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        color: var(--body);
+        background: var(--background);
+        font-family: var(--font-ui);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(120% 80% at 50% -10%, oklch(0.7 0.13 253 / 0.1), transparent 55%),
+          radial-gradient(90% 60% at 100% 8%, oklch(0.72 0.1 230 / 0.07), transparent 50%),
+          var(--background);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body::before {
+          background: radial-gradient(120% 80% at 50% -10%, oklch(0.55 0.16 255 / 0.22), transparent 55%),
+            radial-gradient(90% 70% at 100% 5%, oklch(0.45 0.12 270 / 0.16), transparent 50%),
+            var(--background);
+        }
+      }
+
+      main {
+        width: min(100%, 820px);
+        margin: 0 auto;
+        padding: clamp(16px, 4vw, 40px) clamp(12px, 4vw, 20px) 56px;
+      }
+
+      .panel {
+        padding: clamp(20px, 4vw, 32px);
+        background: var(--surface);
+        border: 1px solid var(--separator);
+        border-radius: var(--radius-card);
+        box-shadow: var(--surface-shadow);
+      }
+
+      @media (prefers-color-scheme: dark) { .panel { border-color: var(--border); } }
+
+      .top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      h1 {
+        margin: 0;
+        color: var(--foreground);
+        font-size: clamp(28px, 5vw, 42px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+
+      p { margin: 10px 0 0; color: var(--body); line-height: 1.6; }
+
+      .language-switch {
+        display: inline-grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        padding: 4px;
+        background: var(--surface-secondary);
+        border: 1px solid var(--separator);
+        border-radius: 12px;
+      }
+
+      button {
+        min-width: 84px;
+        padding: 8px 14px;
+        color: var(--muted);
+        background: transparent;
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+        transition: color 150ms ease, background-color 150ms ease;
+      }
+
+      button:hover { color: var(--foreground); }
+      button.active { color: var(--accent-foreground); background: var(--accent); }
+
+      .documents {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .document-card {
+        display: grid;
+        gap: 8px;
+        min-height: 150px;
+        padding: 20px;
+        color: inherit;
+        text-decoration: none;
+        background: var(--surface-secondary);
+        border: 1px solid var(--separator);
+        border-radius: var(--radius);
+        transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      @media (hover: hover) {
+        .document-card:hover {
+          transform: translateY(-3px);
+          border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+          box-shadow: var(--surface-shadow);
+        }
+      }
+
+      .document-title {
+        color: var(--foreground);
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .document-text { margin: 0; }
+      .document-action { align-self: end; color: var(--accent); font-weight: 600; }
+
+      [data-lang-panel] { display: none; }
+      [data-lang-panel].active { display: block; }
+
+      @media (max-width: 640px) {
+        .top, .documents { grid-template-columns: 1fr; }
+        .top { display: grid; }
+        .language-switch { width: 100%; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { transition-duration: 0.01ms !important; }
+        .document-card:hover { transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="panel" aria-live="polite">
+        <div class="top">
+          <div data-lang-panel="ru" class="active">
+            <h1>Юридические документы</h1>
+            <p>Выберите документ, который хотите открыть.</p>
+          </div>
+          <div data-lang-panel="en">
+            <h1>Legal documents</h1>
+            <p>Choose the document you want to open.</p>
+          </div>
+
+          <div class="language-switch" aria-label="Language">
+            <button type="button" class="active" data-lang-button="ru">Русский</button>
+            <button type="button" data-lang-button="en">English</button>
+          </div>
+        </div>
+
+        <div data-lang-panel="ru" class="active">
+          <div class="documents">
+            <a class="document-card" href="/legal/terms/?lang=ru">
+              <span class="document-title">Пользовательское соглашение</span>
+              <p class="document-text">Условия сервиса, подписка, автоплатежи, медиа-трафик, возвраты, ограничения и поддержка.</p>
+              <span class="document-action">Открыть документ</span>
+            </a>
+            <a class="document-card" href="/legal/privacy/?lang=ru">
+              <span class="document-title">Политика конфиденциальности</span>
+              <p class="document-text">Как __MESYNC_BOT_NAME__ обрабатывает данные, сообщения, платежи, логи и сторонние сервисы.</p>
+              <span class="document-action">Открыть документ</span>
+            </a>
+          </div>
+        </div>
+
+        <div data-lang-panel="en">
+          <div class="documents">
+            <a class="document-card" href="/legal/terms/?lang=en">
+              <span class="document-title">Terms of Use</span>
+              <p class="document-text">Service terms, subscription, recurring payments, media traffic, refunds, limitations, and support.</p>
+              <span class="document-action">Open document</span>
+            </a>
+            <a class="document-card" href="/legal/privacy/?lang=en">
+              <span class="document-title">Privacy Policy</span>
+              <p class="document-text">How __MESYNC_BOT_NAME__ processes data, messages, payments, logs, and third-party services.</p>
+              <span class="document-action">Open document</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const buttons = Array.from(document.querySelectorAll("[data-lang-button]"));
+      const panels = Array.from(document.querySelectorAll("[data-lang-panel]"));
+
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        buttons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.langButton === language);
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.langPanel === language);
+        });
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", language);
+        window.history.replaceState({}, "", url);
+      }
+
+      const initialLanguage = new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "ru";
+      setLanguage(initialLanguage);
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.dataset.langButton));
+      });
+    </script>
+  </body>
+</html>

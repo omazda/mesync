@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Политика конфиденциальности сервиса __MESYNC_BOT_NAME__: обработка и защита персональных данных пользователей." />
+    <meta name="theme-color" content="#f3f5fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)" />
+    <title>__MESYNC_BOT_NAME__ — Политика конфиденциальности / Privacy Policy</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --font-ui: ui-sans-serif, -apple-system, "Segoe UI", "PT Sans", "Noto Sans",
+          "Helvetica Neue", Arial, sans-serif;
+        --accent: oklch(0.621 0.181 252.8);
+        --accent-foreground: oklch(0.99 0.005 250);
+        --background: oklch(0.974 0.006 249);
+        --surface: oklch(0.998 0.0015 250);
+        --surface-secondary: oklch(0.965 0.006 249);
+        --separator: oklch(0.92 0.006 249);
+        --border: oklch(0.9 0.008 249);
+        --foreground: oklch(0.23 0.02 257);
+        --body: oklch(0.37 0.02 257);
+        --muted: oklch(0.555 0.018 256);
+        --radius-card: 20px;
+        --surface-shadow: 0 1px 2px 0 oklch(0.55 0.06 255 / 0.06),
+          0 8px 20px -6px oklch(0.55 0.1 255 / 0.1),
+          0 24px 48px -16px oklch(0.5 0.12 255 / 0.1);
+        color: var(--body);
+        background: var(--background);
+        font-family: var(--font-ui);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --accent: oklch(0.678 0.158 252.8);
+          --background: oklch(0.155 0.012 258);
+          --surface: oklch(0.214 0.012 258);
+          --surface-secondary: oklch(0.246 0.012 258);
+          --separator: oklch(0.27 0.012 258);
+          --border: oklch(0.3 0.012 258);
+          --foreground: oklch(0.96 0.01 258);
+          --body: oklch(0.82 0.015 258);
+          --muted: oklch(0.7 0.02 258);
+          --surface-shadow: inset 0 1px 0 0 oklch(0.85 0.02 258 / 0.07);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        background: var(--background);
+        font-family: var(--font-ui);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(120% 80% at 50% -10%, oklch(0.7 0.13 253 / 0.1), transparent 55%),
+          radial-gradient(90% 60% at 100% 8%, oklch(0.72 0.1 230 / 0.07), transparent 50%),
+          var(--background);
+      }
+      @media (prefers-color-scheme: dark) {
+        body::before {
+          background: radial-gradient(120% 80% at 50% -10%, oklch(0.55 0.16 255 / 0.22), transparent 55%),
+            radial-gradient(90% 70% at 100% 5%, oklch(0.45 0.12 270 / 0.16), transparent 50%),
+            var(--background);
+        }
+      }
+      main { width: min(100%, 820px); margin: 0 auto; padding: clamp(16px, 4vw, 40px) clamp(12px, 4vw, 20px) 56px; }
+      article {
+        padding: clamp(20px, 4vw, 32px);
+        background: var(--surface);
+        border: 1px solid var(--separator);
+        border-radius: var(--radius-card);
+        box-shadow: var(--surface-shadow);
+      }
+      @media (prefers-color-scheme: dark) { article { border-color: var(--border); } }
+      .document-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      h1 { margin: 0; color: var(--foreground); font-size: clamp(28px, 5vw, 42px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+      h2 { margin: 32px 0 0; color: var(--foreground); font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+      p { margin: 12px 0 0; line-height: 1.7; color: var(--body); }
+      a { color: var(--accent); font-weight: 500; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .subtitle { margin-top: 6px; color: var(--muted); font-size: 17px; }
+      .revision { display: inline-block; margin-top: 16px; padding: 4px 12px; color: var(--muted); background: var(--surface-secondary); border: 1px solid var(--separator); border-radius: 999px; font-size: 13px; }
+      .requisites { margin-top: 14px; line-height: 1.8; color: var(--body); }
+      .language-switch { display: inline-grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; background: var(--surface-secondary); border: 1px solid var(--separator); border-radius: 12px; }
+      button { min-width: 84px; padding: 8px 14px; color: var(--muted); background: transparent; border: 0; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 600; transition: color 150ms ease, background-color 150ms ease; }
+      button:hover { color: var(--foreground); }
+      button.active { color: var(--accent-foreground); background: var(--accent); }
+      [data-lang-panel] { display: none; }
+      [data-lang-panel].active { display: block; }
+      @media (max-width: 560px) { .document-top { display: grid; } .language-switch { width: 100%; } }
+      @media (prefers-reduced-motion: reduce) { * { transition-duration: 0.01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <div class="document-top">
+          <div data-lang-panel="ru" class="active">
+            <h1>Политика конфиденциальности</h1>
+            <p class="subtitle">сервиса __MESYNC_BOT_NAME__</p>
+            <p class="revision">Редакция от: 11.07.2026</p>
+          </div>
+          <div data-lang-panel="en">
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">of the __MESYNC_BOT_NAME__ service</p>
+            <p class="revision">Revision date: 11.07.2026</p>
+          </div>
+
+          <div class="language-switch" aria-label="Language">
+            <button type="button" class="active" data-lang-button="ru">Русский</button>
+            <button type="button" data-lang-button="en">English</button>
+          </div>
+        </div>
+
+        <section data-lang-panel="ru" class="active">
+          <p>Настоящая Политика конфиденциальности описывает порядок обработки персональных данных и иных данных при использовании сервиса __MESYNC_BOT_NAME__ — сервиса переноса (синхронизации) сообщений и постов между мессенджерами MAX и Telegram.</p>
+          <p>Политика применяется совместно с <a href="/legal/terms/?lang=ru">Пользовательским соглашением</a>.</p>
+          <p>Русскоязычная редакция является основной юридической версией. Перевод на английский язык носит справочный характер; при расхождениях применяется русская версия.</p>
+
+          <h2>1. Оператор данных</h2>
+        __MESYNC_LEGAL_CONTROLLER_RU__
+
+          <h2>2. Категории субъектов данных</h2>
+          <p>2.1. Пользователи Сервиса — лица, подключающие и использующие __MESYNC_BOT_NAME__.</p>
+          <p>2.2. Участники чатов и каналов Пользователя — лица, чьи сообщения публикуются в подключённых Пользователем источниках и переносятся Сервисом.</p>
+
+          <h2>3. Какие данные обрабатываются</h2>
+          <p>3.1. Данные аккаунта Пользователя: номер телефона, идентификаторы аккаунтов MAX и Telegram, имена/username при наличии, сведения о привязанных мессенджерах, дата создания аккаунта, UI-флаги, сведения об акцепте документов (дата, версии документов, источник акцепта).</p>
+          <p>3.2. Данные подключённых чатов и каналов: идентификаторы, названия, типы, темы Telegram-форумов, аватары или идентификаторы фото, сведения о правах ботов Сервиса, связь источника с аккаунтом Пользователя.</p>
+          <p>3.3. Настройки Пользователя: правила пересылки, направления, подписи, статус правила, признаки остановки модерацией, история служебных уведомлений, настройки подписки и трафика.</p>
+          <p>3.4. Сообщения из подключённых источников обрабатываются для переноса и синхронизации. Сервис может хранить технические идентификаторы: реестр отправленных Сервисом сообщений до 90 дней (защита от зацикливания) и связи «оригинал—копия» до 7 дней (синхронизация правок, удалений и жалоб).</p>
+          <p>3.5. Для жалоб и модерации Сервис может хранить ограниченный снимок текста сообщения, хэш текста, описание жалобы, report-токен, координаты копии сообщения, вердикт, категорию, причину решения и статус рассмотрения. Снимок текста ограничивается техническим лимитом Сервиса и используется только для обработки жалобы, диагностики и защиты от злоупотреблений.</p>
+          <p>3.6. При сбое доставки фрагмент проблемного сообщения, ссылки на источник, идентификаторы сообщения, правило, текст ошибки и технический контекст могут попасть во внутренний служебный журнал ошибок или сервисный канал — исключительно для диагностики и поддержки.</p>
+          <p>3.7. Данные об использовании Сервиса: счётчики медиа-трафика, расход по правилам, статус подписки, пробный период, автоплатёж, технические события, ошибки, логи, данные антиспама жалоб и авторизации.</p>
+          <p>3.8. Платёжные данные в объёме, необходимом для подтверждения оплаты: статусы платежей, идентификаторы платежей ЮKassa, идентификатор сохранённого способа оплаты, признак автоплатежа, название способа оплаты в сокращённом виде. Полные данные банковских карт и платёжных средств Исполнителем не хранятся и обрабатываются ЮKassa.</p>
+          <p>3.9. Данные кодов активации: выданные коды, дата создания, дата использования и аккаунт, активировавший код.</p>
+          <p>3.10. Технические данные: IP-адреса и user-agent могут попадать в журналы веб-сервера, reverse proxy, панели администратора и защитных механизмов; cookie и localStorage используются для сессии и настроек mini-app.__MESYNC_TRACKER_DATA_RU__</p>
+          <p>3.11. Данные ИИ-модерации: если включена автоматическая модерация, фрагменты текста сообщения или жалобы могут передаваться провайдеру MiniMax через API для классификации нарушения.</p>
+
+          <h2>4. Цели обработки данных</h2>
+          <p>4.1. Номер телефона и данные авторизации — для идентификации Пользователя и доступа к его настройкам.</p>
+          <p>4.2. Данные чатов и каналов — для подключения источников и переноса сообщений по правилам Пользователя.</p>
+          <p>4.3. Сообщения источников — для их переноса между подключёнными чатами и каналами.</p>
+          <p>4.4. Счётчики медиа-трафика и платёжные статусы — для учёта оплаченного объёма, продления подписки и подтверждения оплат.</p>
+          <p>4.5. Технические события, ошибки и логи — для диагностики, поддержки, защиты от злоупотреблений и обеспечения безопасности Сервиса.__MESYNC_TRACKER_PURPOSE_RU__</p>
+          <p>4.6. Данные жалоб, снимки сообщений и результаты ИИ-модерации — для обработки жалоб, скрытия нарушающего контента, предотвращения повторных нарушений, защиты Пользователей и соблюдения правил платформ.</p>
+          <p>4.7. Контактные данные — для обработки обращений, претензий и запросов Пользователя.</p>
+          <p>4.8. Данные акцепта документов — для подтверждения заключения договора, выполнения требований платформ и управления обновлениями юридических документов.</p>
+          <p>4.9. Иные данные — для выполнения требований законодательства.</p>
+
+          <h2>5. Операции с данными</h2>
+          <p>Исполнитель может совершать с данными следующие действия: сбор, запись, систематизация, накопление, хранение, уточнение, обновление, изменение, использование, передача, предоставление доступа, обезличивание, блокирование, удаление и уничтожение. Обработка может осуществляться как автоматизированным, так и неавтоматизированным способом.</p>
+
+          <h2>6. Правовые основания обработки</h2>
+          <p>6.1. Согласие Пользователя.</p>
+          <p>6.2. Необходимость исполнения Пользовательского соглашения.</p>
+          <p>6.3. Законный интерес Исполнителя в обеспечении работы, безопасности и улучшении Сервиса.</p>
+          <p>6.4. Требования законодательства, если такие требования применимы.</p>
+
+          <h2>7. Данные третьих лиц</h2>
+          <p>7.1. Подключая чаты и каналы, Пользователь передаёт в Сервис сообщения их участников для переноса.</p>
+          <p>7.2. Пользователь гарантирует, что обладает необходимыми правами и/или согласиями на подключение источников и перенос их содержимого.</p>
+          <p>7.3. Пользователь самостоятельно отвечает за законность переноса данных третьих лиц.</p>
+          <p>7.4. Исполнитель обрабатывает данные третьих лиц только в объёме, необходимом для работы Сервиса, и не сохраняет содержимое переносимых сообщений.</p>
+
+          <h2>8. Передача данных третьим лицам</h2>
+          <p>Для работы Сервиса данные могут передаваться или становиться доступными следующим категориям лиц:</p>
+          <p>8.1. MAX и Telegram — для работы ботов, мини-приложения и переноса сообщений.</p>
+          <p>8.2. Платёжному сервису ЮKassa — для проведения и подтверждения оплат и автоплатежей.</p>
+          <p>8.3. MiniMax или иному провайдеру ИИ-модерации — для автоматической классификации спорного или подозрительного контента, если такая функция включена.</p>
+          <p>8.4. Хостинг-провайдерам, CDN, reverse proxy, сервисам журналирования, резервного копирования и техническим подрядчикам — для размещения, обслуживания, защиты и диагностики Сервиса.</p>
+          <p>8.5. Государственным органам — если передача требуется по закону.</p>
+          __MESYNC_TRACKER_THIRD_PARTY_RU__
+          <p>Такие лица могут обрабатывать данные в соответствии со своей ролью, собственными правилами обработки данных и/или договорами с Исполнителем.</p>
+
+          <h2>9. Трансграничная передача данных</h2>
+          <p>9.1. Для работы Сервиса могут использоваться мессенджеры, платёжные и инфраструктурные сервисы, размещённые за пределами Российской Федерации.</p>
+          <p>9.2. В связи с этим данные могут передаваться в иностранные государства, включая государства, которые могут не обеспечивать уровень защиты персональных данных, эквивалентный требованиям законодательства Российской Федерации.</p>
+          <p>9.3. Если применимы требования локализации персональных данных граждан Российской Федерации, первичная запись, систематизация, накопление, хранение, уточнение и извлечение таких данных должны осуществляться с учётом требований законодательства РФ. Фактические места хранения и категории трансграничной передачи фиксируются оператором во внутреннем реестре обработок и, при необходимости, в уведомлении Роскомнадзора.</p>
+          <p>9.4. Используя Сервис, Пользователь соглашается с такой передачей данных в объёме, необходимом для работы Сервиса.</p>
+
+          <h2>10. Cookies и аналитика</h2>
+          <p>10.1. Сервис может использовать технические cookies, локальное хранилище браузера и аналогичные технологии для авторизации, сохранения настроек, работы мини-приложения и обеспечения безопасности.</p>
+          <p>10.2. Сервис может использовать техническую аналитику и журналы событий для диагностики ошибок, анализа стабильности работы и защиты от злоупотреблений.</p>
+          __MESYNC_TRACKER_COOKIES_RU__
+
+          <h2>11. Срок хранения данных</h2>
+          <p>11.1. Данные хранятся в течение срока использования Сервиса Пользователем.</p>
+          <p>11.2. Реестр отправленных Сервисом сообщений хранится до 90 дней; связи «оригинал—копия» и ограниченные снимки текста для жалоб обычно хранятся до 7 дней, если жалоба или спор не требуют более долгого хранения.</p>
+          <p>11.3. Записи жалоб, решений модерации, платёжные статусы, акцепты документов, история уведомлений, коды активации и служебные журналы могут храниться дольше, если это необходимо для исполнения договора, обработки платежей, разрешения споров, защиты прав, предотвращения злоупотреблений или выполнения требований законодательства.</p>
+          <p>11.4. Резервные копии могут храниться отдельно в течение технически необходимого срока и перезаписываться по графику резервного копирования.</p>
+          <p>11.5. Данные удаляются или обезличиваются после достижения целей обработки, получения законного требования об удалении или прекращения необходимости в их хранении, если иное не требуется по закону.</p>
+
+          <h2>12. Безопасность данных</h2>
+          <p>Исполнитель принимает организационные и технические меры для защиты данных, включая ограничение доступа к данным, использование защищённого соединения HTTPS, контроль доступа к серверной инфраструктуре, хранение токенов и ключей в конфигурации сервера, резервное копирование, журналирование технических событий и ограничение доступа к административным функциям.</p>
+          <p>При инциденте безопасности Исполнитель проводит внутреннюю проверку, принимает меры по ограничению последствий и уведомляет уполномоченные органы и/или затронутых лиц в случаях и сроки, установленные законом.</p>
+          <p>Пользователь понимает, что передача данных через интернет, мессенджеры и сторонние сервисы не может быть абсолютно безопасной.</p>
+
+          <h2>13. Права Пользователя</h2>
+          <p>13.1. Запросить информацию об обработке своих данных.</p>
+          <p>13.2. Запросить уточнение, исправление или удаление данных.</p>
+          <p>13.3. Отозвать согласие на обработку данных, если обработка основана на согласии.</p>
+          <p>13.4. Запросить ограничение обработки данных в случаях, предусмотренных законом.</p>
+          <p>13.5. Направить обращение или претензию по контактам Исполнителя.</p>
+          <p>13.6. Обратиться в уполномоченный орган по защите персональных данных, если считает, что его права нарушены.</p>
+
+          <h2>14. Порядок обращений и удаления данных</h2>
+          <p>14.1. Пользователь может направить запрос об обработке, исправлении, удалении данных, отзыве согласия или удалении аккаунта на электронную почту Исполнителя. Отключённые источники и удалённые правила перестают обрабатываться сразу.</p>
+          <p>14.2. Запрос должен содержать данные, позволяющие идентифицировать Пользователя, контакт для ответа и суть требования.</p>
+          <p>14.3. Исполнитель рассматривает запрос в срок до 30 календарных дней с момента получения.</p>
+          <p>14.4. Удаление данных может привести к невозможности дальнейшего использования Сервиса или отдельных функций.</p>
+          <p>14.5. Исполнитель вправе продолжить обработку данных без согласия Пользователя, если такая обработка допускается законодательством.</p>
+
+          <h2>15. Данные детей</h2>
+          <p>Сервис не предназначен для использования детьми. Пользователь подтверждает, что использует Сервис самостоятельно и обладает необходимой правоспособностью для принятия настоящей Политики и Пользовательского соглашения.</p>
+
+          <h2>16. Изменение Политики</h2>
+          <p>16.1. Исполнитель вправе изменять настоящую Политику.</p>
+          <p>16.2. Актуальная редакция Политики публикуется на сайте, в мини-приложении или ином доступном интерфейсе Сервиса.</p>
+          <p>16.3. Продолжение использования Сервиса после публикации новой редакции означает согласие Пользователя с изменениями, если Сервис не потребовал отдельного повторного акцепта.</p>
+
+          <h2>17. Контакты</h2>
+        __MESYNC_SUPPORT_CONTACT_RU__
+        </section>
+
+        <section data-lang-panel="en">
+          <p>This Privacy Policy describes how personal and other data is processed when using the __MESYNC_BOT_NAME__ service — a service for transferring (mirroring) messages and posts between the MAX and Telegram messengers.</p>
+          <p>The Policy applies together with the <a href="/legal/terms/?lang=en">Terms of Use</a>.</p>
+          <p>The Russian version is the primary legal version. The English version is provided for reference only; in case of discrepancy, the Russian version prevails.</p>
+
+          <h2>1. Data controller</h2>
+        __MESYNC_LEGAL_CONTROLLER_EN__
+
+          <h2>2. Categories of data subjects</h2>
+          <p>2.1. Service Users — persons who connect and use __MESYNC_BOT_NAME__.</p>
+          <p>2.2. Participants of the User's chats and channels — persons whose messages are published in the sources connected by the User and transferred by the Service.</p>
+
+          <h2>3. What data is processed</h2>
+          <p>3.1. User account data: phone number, MAX and Telegram account identifiers, names/usernames where available, linked messenger information, account creation date, UI flags, and document acceptance records (date, document versions, acceptance source).</p>
+          <p>3.2. Connected chats and channels data: identifiers, titles, types, Telegram forum topics, avatars or photo identifiers, information about Service bot permissions, and the link between a source and the User account.</p>
+          <p>3.3. User settings: forwarding rules, directions, signatures, rule status, moderation hold flags, service notification history, subscription and traffic settings.</p>
+          <p>3.4. Messages from connected sources are processed for transfer and synchronization. The Service may store technical identifiers: a registry of messages sent by the Service for up to 90 days (loop protection) and "original—copy" links for up to 7 days (edit, deletion, and complaint synchronization).</p>
+          <p>3.5. For complaints and moderation, the Service may store a limited text snapshot, text hash, complaint description, report token, coordinates of the copied message, verdict, category, decision reason, and review status. The text snapshot is limited by the Service's technical limit and is used only for complaint processing, diagnostics, and abuse protection.</p>
+          <p>3.6. In case of a delivery failure, a fragment of the problematic message, source links, message identifiers, rule, error text, and technical context may be recorded in internal error logs or a service channel solely for diagnostics and support.</p>
+          <p>3.7. Service usage data: media traffic counters, per-rule usage, subscription status, trial period, recurring payment status, technical events, errors, logs, complaint anti-spam data, and authorization data.</p>
+          <p>3.8. Payment data to the extent necessary to confirm payment: YooKassa payment identifiers, saved payment method identifier, recurring payment flag, and a shortened payment method title. Full bank card and payment credentials are not stored by the Contractor and are processed by YooKassa.</p>
+          <p>3.9. Activation code data: issued codes, creation date, usage date, and the account that activated the code.</p>
+          <p>3.10. Technical data: IP addresses and user-agent may be recorded in web server, reverse proxy, admin panel, and security logs; cookies and localStorage are used for session and Mini App settings.__MESYNC_TRACKER_DATA_EN__</p>
+          <p>3.11. AI moderation data: if automatic moderation is enabled, fragments of message or complaint text may be sent to the MiniMax provider via API for violation classification.</p>
+
+          <h2>4. Purposes of data processing</h2>
+          <p>4.1. Phone number and authorization data — to identify the User and provide access to their settings.</p>
+          <p>4.2. Chats and channels data — to connect sources and transfer messages according to the User's rules.</p>
+          <p>4.3. Source messages — to transfer them between connected chats and channels.</p>
+          <p>4.4. Media traffic counters and payment statuses — to account for the paid volume, renew the subscription, and confirm payments.</p>
+          <p>4.5. Technical events, errors, and logs — for diagnostics, support, abuse protection, and Service security.__MESYNC_TRACKER_PURPOSE_EN__</p>
+          <p>4.6. Complaint data, message snapshots, and AI moderation results — to process complaints, hide violating content, prevent repeated violations, protect Users, and comply with platform rules.</p>
+          <p>4.7. Contact details — to handle the User's requests and claims.</p>
+          <p>4.8. Document acceptance data — to confirm contract conclusion, meet platform requirements, and manage legal document updates.</p>
+          <p>4.9. Other data — to comply with legal requirements.</p>
+
+          <h2>5. Data operations</h2>
+          <p>The Contractor may perform the following operations with data: collection, recording, systematization, accumulation, storage, clarification, updating, modification, use, transfer, provision of access, depersonalization, blocking, deletion, and destruction. Processing may be automated or non-automated.</p>
+
+          <h2>6. Legal grounds for processing</h2>
+          <p>6.1. The User's consent.</p>
+          <p>6.2. The need to perform the Terms of Use.</p>
+          <p>6.3. The Contractor's legitimate interest in operating, securing, and improving the Service.</p>
+          <p>6.4. Legal requirements, where applicable.</p>
+
+          <h2>7. Third-party data</h2>
+          <p>7.1. By connecting chats and channels, the User transfers messages of their participants to the Service for mirroring.</p>
+          <p>7.2. The User warrants that they have the necessary rights and/or consents to connect sources and transfer their content.</p>
+          <p>7.3. The User is solely responsible for the lawfulness of transferring third-party data.</p>
+          <p>7.4. The Contractor processes third-party data only to the extent necessary for the Service to work and does not store the content of transferred messages.</p>
+
+          <h2>8. Data sharing</h2>
+          <p>For the Service to work, data may be transferred to or become available to the following categories of persons:</p>
+          <p>8.1. MAX and Telegram — for the operation of bots, the Mini App, and message transfer.</p>
+          <p>8.2. The YooKassa payment service — for making and confirming payments and recurring charges.</p>
+          <p>8.3. MiniMax or another AI moderation provider — for automated classification of disputed or suspicious content, if this function is enabled.</p>
+          <p>8.4. Hosting providers, CDN, reverse proxy, logging services, backup services, and technical contractors — for hosting, maintenance, protection, and diagnostics of the Service.</p>
+          <p>8.5. Government authorities — if required by law.</p>
+          __MESYNC_TRACKER_THIRD_PARTY_EN__
+          <p>Such persons may process data according to their role, their own data processing rules, and/or agreements with the Contractor.</p>
+
+          <h2>9. Cross-border data transfer</h2>
+          <p>9.1. Messengers, payment, and infrastructure services located outside the Russian Federation may be used for the Service to work.</p>
+          <p>9.2. Consequently, data may be transferred to foreign countries, including countries that may not provide a level of personal data protection equivalent to the requirements of the legislation of the Russian Federation.</p>
+          <p>9.3. Where localization requirements for personal data of Russian citizens apply, primary recording, systematization, accumulation, storage, clarification, and retrieval of such data must be performed with consideration of Russian law. Actual storage locations and cross-border transfer categories are recorded by the controller in its internal processing register and, where necessary, in the Roskomnadzor notification.</p>
+          <p>9.4. By using the Service, the User agrees to such data transfer to the extent necessary for the Service to work.</p>
+
+          <h2>10. Cookies and analytics</h2>
+          <p>10.1. The Service may use technical cookies, browser local storage, and similar technologies for authorization, saving settings, Mini App operation, and security.</p>
+          <p>10.2. The Service may use technical analytics and event logs to diagnose errors, analyze stability, and protect against abuse.</p>
+          __MESYNC_TRACKER_COOKIES_EN__
+
+          <h2>11. Data retention</h2>
+          <p>11.1. Data is stored for the period of the User's use of the Service.</p>
+          <p>11.2. The registry of messages sent by the Service is stored for up to 90 days; "original—copy" links and limited text snapshots for complaints are normally stored for up to 7 days unless a complaint or dispute requires longer storage.</p>
+          <p>11.3. Complaint records, moderation decisions, payment statuses, document acceptances, notification history, activation codes, and service logs may be stored longer where necessary for agreement performance, payment processing, dispute resolution, rights protection, abuse prevention, or compliance with legal requirements.</p>
+          <p>11.4. Backups may be stored separately for the technically necessary period and overwritten according to the backup schedule.</p>
+          <p>11.5. Data is deleted or depersonalized after the purposes of processing are achieved, upon a lawful deletion request, or when storage is no longer needed, unless otherwise required by law.</p>
+
+          <h2>12. Data security</h2>
+          <p>The Contractor takes organizational and technical measures to protect data, including restricting access to data, using secure HTTPS connections, controlling access to server infrastructure, storing tokens and keys in server configuration, backups, technical event logging, and restricting access to administrative functions.</p>
+          <p>In case of a security incident, the Contractor conducts an internal review, takes measures to limit consequences, and notifies competent authorities and/or affected persons where required by law.</p>
+          <p>The User understands that data transmission via the internet, messengers, and third-party services cannot be absolutely secure.</p>
+
+          <h2>13. User rights</h2>
+          <p>13.1. Request information about the processing of their data.</p>
+          <p>13.2. Request clarification, correction, or deletion of data.</p>
+          <p>13.3. Withdraw consent to data processing where processing is based on consent.</p>
+          <p>13.4. Request restriction of data processing in cases provided by law.</p>
+          <p>13.5. Send a request or claim using the Contractor's contacts.</p>
+          <p>13.6. Contact the authorized personal data protection authority if they believe their rights have been violated.</p>
+
+          <h2>14. Requests and data deletion</h2>
+          <p>14.1. The User may send a request regarding processing, correction, deletion of data, consent withdrawal, or account deletion to the Contractor's email. Disconnected sources and deleted rules stop being processed immediately.</p>
+          <p>14.2. The request must contain data identifying the User, a contact for reply, and the substance of the demand.</p>
+          <p>14.3. The Contractor considers the request within up to 30 calendar days from receipt.</p>
+          <p>14.4. Data deletion may make further use of the Service or individual features impossible.</p>
+          <p>14.5. The Contractor may continue processing data without the User's consent where such processing is permitted by law.</p>
+
+          <h2>15. Children's data</h2>
+          <p>The Service is not intended for use by children. The User confirms that they use the Service independently and have the necessary legal capacity to accept this Policy and the Terms of Use.</p>
+
+          <h2>16. Changes to the Policy</h2>
+          <p>16.1. The Contractor may amend this Policy.</p>
+          <p>16.2. The current version of the Policy is published on the website, in the Mini App, or in another available Service interface.</p>
+          <p>16.3. Continued use of the Service after the publication of a new version constitutes the User's consent to the changes, unless the Service requires separate repeated acceptance.</p>
+
+          <h2>17. Contacts</h2>
+        __MESYNC_SUPPORT_CONTACT_EN__
+        </section>
+      </article>
+    </main>
+
+    <script>
+      const buttons = Array.from(document.querySelectorAll("[data-lang-button]"));
+      const panels = Array.from(document.querySelectorAll("[data-lang-panel]"));
+
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        buttons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.langButton === language);
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.langPanel === language);
+        });
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", language);
+        window.history.replaceState({}, "", url);
+      }
+
+      const initialLanguage = new URLSearchParams(window.location.search).get("lang") === "en" ? "en" : "ru";
+      setLanguage(initialLanguage);
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.dataset.langButton));
+      });
+    </script>
+  </body>
+</html>
